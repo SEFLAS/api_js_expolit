@@ -1,16 +1,83 @@
+
 try {
-    const datarequest = {0:'Synapse',1:'Script-Ware',2:'KRNL',3:'DX9WARE',4:'Electron',5:'WeAreDevs API',6:'Oxygen-U',7:'Fluxus',8:'Celestial',9:'Comet',10:'Elexe',11:'ROBLOX'};
+    let datarequest = {
+        0:{
+            Name : 'Synapse',
+            Updated : '',
+        },
+        1:{
+            Name : 'Script-Ware',
+            Updated : ''
+        },
+        2:{
+            Name : 'KRNL',
+            Updated : '',
+        },
+        3:{
+            Name : 'DX9WARE',
+            Updated : '',
+        },
+        4:{
+            Name : 'Electron',
+            Updated : '',
+        },
+        5:{
+            Name : 'WeAreDevs API',
+            Updated : '',
+        },
+        6:{
+            Name : 'Oxygen-U',
+            Updated : '',
+        },
+        7:{
+            Name : 'Fluxus',
+            Updated : '',
+        },
+        8:{
+            Name : 'Celestial',
+            Updated : '',
+        },
+        9:{
+            Name : 'Comet',
+            Updated : '',
+        },
+        10:{
+            Name : 'Elexe',
+            Updated : '',
+        },
+        11: {
+            Name : 'ROBLOX',
+            Updated : '',
+        },
+    };
     fetch('https://api.whatexploitsare.online/status')
     .then(response => response.json())
     .then(data => {
-        for (var k = 0; k < data.length; k++){
-            console.log(data[k][datarequest[k]]);
+        while (true) { // fk loop
+            for (var k = 0; k < data.length; k++){
+                if (k <= 10) {
+                    if (typeof(datarequest[k]['Updated']) != "boolean") {
+                        datarequest[k]['Updated'] = data[k][datarequest[k]['Name']]['updated']
+                        if (datarequest[k]['Updated'] == true) {
+                            console.log(datarequest[k]['Name'],"Updated : ✔")
+                        } else {
+                            console.log(datarequest[k]['Name'],"Updated : ✖") 
+                        }
+                    }
+                } else {
+                    if (typeof(datarequest[k]['Updated']) != "boolean") {
+                        datarequest[k]['Updated'] = data[k][datarequest[k]['Name']]['version']
+                        console.log(datarequest[k]['Name'],"Version :",datarequest[k]['Updated'])
+                    }
+                };
+            }
+            break
         }
     })
     .catch(error => {
       console.error(error);
     });
 } catch (s) {
-    console.log(d)
+    console.log(s)
     this.error = 'Hang on, we re having some issues loading the API';
 };
