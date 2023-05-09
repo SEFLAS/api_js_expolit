@@ -56,22 +56,18 @@ try {
         while (true) { // fk loop
             for (var k = 0; k < data.length; k++){
                 if (k <= 10) {
-                    if (typeof(datarequest[k]['Updated']) != "boolean") {
-                        datarequest[k]['Updated'] = data[k][datarequest[k]['Name']]['updated']
-                        if (datarequest[k]['Updated'] == true) {
-                            console.log(datarequest[k]['Name'],"Updated : ✔")
-                            // document.getElementById('ID').innerHTML = '✔';
-                        } else {
-                            console.log(datarequest[k]['Name'],"Updated : ✖") 
-                            // document.getElementById('ID').innerHTML = '✖';
-                        }
+                    datarequest[k]['Updated'] = data[k][datarequest[k]['Name']]['updated']
+                    if (datarequest[k]['Updated'] == true) {
+                        console.log(datarequest[k]['Name'],"Updated : ✔")
+                        // document.getElementById('ID').innerHTML = '✔';
+                    } else {
+                        console.log(datarequest[k]['Name'],"Updated : ✖") 
+                        // document.getElementById('ID').innerHTML = '✖';
                     }
                 } else {
-                    if (typeof(datarequest[k]['Updated']) != "boolean") {
-                        datarequest[k]['Updated'] = data[k][datarequest[k]['Name']]['version']
-                        console.log(datarequest[k]['Name'],"Version :",datarequest[k]['Updated'])
-                        // document.getElementById('ID').innerHTML = datarequest[k]['Updated']; Link To site
-                    }
+                    datarequest[k]['Updated'] = data[k][datarequest[k]['Name']]['version']
+                    console.log(datarequest[k]['Name'],"Version :",datarequest[k]['Updated'])
+                    // document.getElementById('ID').innerHTML = datarequest[k]['Updated'];
                 };
             }
             break
